@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Quiz</title>
+</head>
+<body>
+  <h2>Quiz</h2>
+  <form method="POST" action="{% url 'quiz:take_quiz' %}">
+    {% csrf_token %}
+    {% for question in questions %}
+      <fieldset>
+        <legend>{{ question.id }}. {{ question }}</legend>
+        {% for option in question.options %}
+          <label>
+            <input type="radio" name="question_{{ question.id }}" value="{{ option }}">
+            {{ option }}
+          </label><br>
+        {% endfor %}
+        <a href="{% url 'quiz:like_question' question.id %}">Like</a>
+      </fieldset>
+    {% endfor %}
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <p>Username: {{ user_profile.user.username }}</p>
+    <p>Email: {{ user_profile.user.email }}</p>
+    <p>Number of liked questions: {{ user_profile.liked_questions.count }}</p>
+    <p>Total Tests: {{ total_tests }}</p>
+    <p>Correct Answers: {{ correct_answers }}</p>
+    <p>Incorrect Answers: {{ incorrect_answers }}</p>
+    <p>Perfect Tests: {{ perfect_tests }}</p>
+    <p>Success Rate: {{ success_rate }}</p>
+
+<a href="{% url 'quiz:logout' %}">Logout</a>
+</body>
+</html>
